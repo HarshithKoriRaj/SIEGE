@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import os
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,7 +17,13 @@ def cors_origins() -> list[str]:
     return [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
 
 
-app = FastAPI(title="Siege API", version="0.1.0")
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    database.init_db()
+    yield
+
+
+app = FastAPI(title="Siege API", version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,11 +32,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("startup")
-def startup() -> None:
-    database.init_db()
 
 
 @app.post("/api/start-siege", response_model=StartSiegeResponse, status_code=202)
@@ -57,4 +60,3 @@ async def get_campaign(campaign_id: int) -> CampaignResponse:
         progress=database.campaign_progress(campaign_id),
         logs=database.list_attack_logs(campaign_id),
     )
-

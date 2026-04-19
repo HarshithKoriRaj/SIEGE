@@ -18,7 +18,10 @@ class StartSiegeRequest(BaseModel):
     @field_validator("target_description")
     @classmethod
     def normalize_target_description(cls, value: str) -> str:
-        return value.strip()
+        stripped = value.strip()
+        if not stripped:
+            raise ValueError("target_description cannot be empty")
+        return stripped
 
 
 class StartSiegeResponse(BaseModel):
@@ -49,4 +52,3 @@ class CampaignResponse(BaseModel):
     overall_score: int
     progress: int
     logs: list[AttackLogResponse]
-
