@@ -29,6 +29,8 @@ npm run dev
 
 The frontend expects the backend at `http://127.0.0.1:8000`. Override it with `NEXT_PUBLIC_API_BASE_URL`.
 
+For the Codex in-app browser, use `npm run preview` from `frontend/` to serve the production build on `http://localhost:3000` without Next's development overlay.
+
 ## Tests
 
 ```bash
