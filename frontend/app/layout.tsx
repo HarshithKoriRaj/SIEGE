@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Libre_Baskerville, Manrope } from "next/font/google";
+import { Black_Ops_One, IBM_Plex_Mono, Sora } from "next/font/google";
 import "./globals.css";
 
-const display = Libre_Baskerville({
+const display = Black_Ops_One({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
   variable: "--font-display",
 });
 
-const sans = Manrope({
+const sans = Sora({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -37,4 +37,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       boxShadow: {
-        "signal": "0 0 36px rgba(60, 255, 167, 0.18)",
-        "danger": "0 0 40px rgba(255, 77, 77, 0.22)",
+        "signal": "0 0 36px rgba(255, 43, 43, 0.18)",
+        "danger": "0 0 46px rgba(255, 0, 46, 0.3)",
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
@@ -42,4 +42,3 @@ const config: Config = {
 };
 
 export default config;
-
