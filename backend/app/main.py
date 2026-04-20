@@ -13,7 +13,10 @@ from app.siege_engine import run_siege_campaign
 
 
 def cors_origins() -> list[str]:
-    raw_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000")
+    raw_origins = os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000",
+    )
     return [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
 
 

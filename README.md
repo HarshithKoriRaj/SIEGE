@@ -17,7 +17,7 @@ The backend exposes:
 - `POST /api/start-siege`
 - `GET /api/campaign/{id}`
 
-By default, CORS allows `http://localhost:3000`. Override it with `CORS_ORIGINS`, using a comma-separated list.
+By default, CORS allows `http://localhost:3000` and `http://127.0.0.1:3000`. Override it with `CORS_ORIGINS`, using a comma-separated list.
 
 ## Frontend
 

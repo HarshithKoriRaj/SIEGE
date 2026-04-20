@@ -2,6 +2,17 @@ from __future__ import annotations
 
 from fastapi.testclient import TestClient
 
+from app.main import cors_origins
+
+
+def test_cors_defaults_include_localhost_aliases(monkeypatch) -> None:
+    monkeypatch.delenv("CORS_ORIGINS", raising=False)
+
+    assert cors_origins() == [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
 
 def test_start_siege_creates_campaign(client: TestClient) -> None:
     response = client.post(
@@ -53,4 +64,3 @@ def test_get_campaign_unknown_id_returns_404(client: TestClient) -> None:
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Campaign not found"
-

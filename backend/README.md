@@ -14,7 +14,7 @@ uvicorn app.main:app --reload --port 8000
 ## Configuration
 
 - `SIEGE_DB_PATH`: SQLite database path. Defaults to `./siege.db`.
-- `CORS_ORIGINS`: Comma-separated frontend origins. Defaults to `http://localhost:3000`.
+- `CORS_ORIGINS`: Comma-separated frontend origins. Defaults to `http://localhost:3000,http://127.0.0.1:3000`.
 
 ## API
 
@@ -31,4 +31,3 @@ Fetch campaign status:
 ```bash
 curl http://localhost:8000/api/campaign/1
 ```
-
