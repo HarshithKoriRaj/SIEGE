@@ -19,6 +19,16 @@ The backend exposes:
 
 By default, CORS allows `http://localhost:3000`. Override it with `CORS_ORIGINS`, using a comma-separated list.
 
+## Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend expects the backend at `http://127.0.0.1:8000`. Override it with `NEXT_PUBLIC_API_BASE_URL`.
+
 ## Tests
 
 ```bash
@@ -27,3 +37,11 @@ pip install -r requirements.txt
 pytest
 ```
 
+Frontend checks:
+
+```bash
+cd frontend
+npm run lint
+npm run typecheck
+npm run build
+```
